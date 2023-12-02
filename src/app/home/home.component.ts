@@ -11,6 +11,7 @@ export class HomeComponent {
   name: String = "";
   review: String ="";
   
+  
   constructor() { 
     this.loadGame();
   }
@@ -28,4 +29,5 @@ export class HomeComponent {
 
   ngOnInit(): void {
   }
+  
 }

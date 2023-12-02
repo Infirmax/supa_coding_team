@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 
+
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
@@ -7,9 +8,15 @@ import { Component } from '@angular/core';
 })
 export class SearchBarComponent {
   items: any[] = [
-    { name: 'cs2' },
-    { name: 'club penguin' },
-    { name: 'pico park' }
+    { name: 'Sakura Dungeon' },
+    { name: 'Counter Strike 2' },
+    { name: 'Dota 2' },
+    { name: 'PUBG'},
+    { name: 'Lethal Company'},
+    { name: 'Team Fortress 2'},
+    { name: 'Oxygen Not Included'},
+    { name: 'MapleStory'},
+    { name: 'Sakura Clicker'}
     // Other items
   ];
   filteredItems: any[] = [];
