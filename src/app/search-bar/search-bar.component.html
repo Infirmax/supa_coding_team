@@ -1,5 +1,5 @@
 <div>
-    <input type="text" placeholder="Search..."  [(ngModel)]="searchTerm" (input)="filterItems">
+    <input type="text" placeholder="Search..."  [(ngModel)]="searchTerm" (input)="filterItems()">
     <button (click)="submitSearch()">Submit</button>
     <p *ngIf="submittedSearchTerm">You guessed: {{ submittedSearchTerm }}</p>
     
