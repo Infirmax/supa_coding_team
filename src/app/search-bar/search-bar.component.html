@@ -1,10 +1,13 @@
 <div>
-    <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="filterItems">
+    <input type="text" placeholder="Search..."  (input)="filterItems">
+    <button (click)="submitSearch()">Submit</button>
+    <p *ngIf="submittedSearchTerm">You guessed: {{ submittedSearchTerm }}</p>
     
     <ul *ngIf="filteredItems.length > 0" class="suggestions">
       <li *ngFor="let item of filteredItems" (click)="onItemClick(item)">
         {{item.name}}
       </li>
     </ul>
+    
 </div>
   
