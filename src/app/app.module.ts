@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
+import { SignupModule } from './signup/signup.module';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { SearchBarComponent } from './search-bar/search-bar.component';
   imports: [
     FormsModule,
     LoginModule,
+    SignupModule,
     RouterModule,
     BrowserModule,
     AppRoutingModule

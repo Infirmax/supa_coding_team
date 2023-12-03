@@ -2,6 +2,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { NgModule } from '@angular/core';
 
@@ -10,6 +11,7 @@ const routeConfig: Routes = [
   { path: 'home', title: 'HomePage', component: HomeComponent},
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
   { path: 'search', component: SearchBarComponent}
 ];
 

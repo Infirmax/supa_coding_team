@@ -13,6 +13,7 @@ import { Component } from '@angular/core';
         <li><a routerLink="/home">Home</a></li>
         <li><a routerLink="/about">About</a></li>
         <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/signup">signup</a></li>
       <!-- Add more navigation links here -->
       </ul>
       </nav>
