@@ -7,13 +7,34 @@
   
   form {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .login-buttons{
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  #signup {
+    background-color: #ECECEC;
+    border: 0;
+  }
+
+  #signup:hover {
+    background-color: #e2e2e2;
+  }
+
+  .login-buttons button {
+    width: 50%;
+    border-radius: 0;
   }
   
   .login-content {
-    width: 400px;
+    width: 30%;
     display: block;
     margin: 0 auto;
-    text-align: center;
   }
   
   .login-toolbar {

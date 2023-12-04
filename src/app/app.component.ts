@@ -1,14 +1,9 @@
-import { Component, NgModule } from '@angular/core';
-import { RouterOutlet, RouterModule} from '@angular/router';
-import { AppModule } from './app.module';
-
-
+import { Component } from '@angular/core';
 
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [AppModule, RouterModule, RouterOutlet],
+
   template: `
     <main>
       <header>
@@ -18,15 +13,17 @@ import { AppModule } from './app.module';
         <li><a routerLink="/home">Home</a></li>
         <li><a routerLink="/about">About</a></li>
         <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/signup">signup</a></li>
       <!-- Add more navigation links here -->
       </ul>
       </nav>
       <section>
-        <app-search-bar></app-search-bar>
-      </section>  
-      <section>
         <router-outlet></router-outlet>
       </section>
+      <section>
+        <app-search-bar></app-search-bar>
+      </section>  
+  
     </main>
   `,
   styleUrls: ['./app.component.css']

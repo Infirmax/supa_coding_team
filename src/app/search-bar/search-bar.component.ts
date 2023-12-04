@@ -1,24 +1,29 @@
 import { Component } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrl: './search-bar.component.css'
+  styleUrls: ['./search-bar.component.css'], // Update styleUrls property
 })
 export class SearchBarComponent {
-  items: any[] = []; // Your list of items
+  items: any[] = [
+    { name: 'Sakura Dungeon' },
+    { name: 'Counter Strike 2' },
+    { name: 'Dota 2' },
+    { name: 'PUBG'},
+    { name: 'Lethal Company'},
+    { name: 'Team Fortress 2'},
+    { name: 'Oxygen Not Included'},
+    { name: 'MapleStory'},
+    { name: 'Sakura Clicker'}
+    // Other items
+  ];
   filteredItems: any[] = [];
   searchTerm: string = '';
+  submittedSearchTerm: string = '';
 
   constructor() {
-    // Fetch or initialize your items array here
-    this.items = [
-      { name: 'cs2' },
-      { name: 'club penguin' },
-      { name: 'pico park'}
-      // Other items
-    ];
     this.filteredItems = this.items; // Initially set filteredItems to all items
   }
 
@@ -29,9 +34,13 @@ export class SearchBarComponent {
   }
 
   onItemClick(item: any) {
-    // Implement what happens when an item from suggestions is clicked (e.g., select the item, perform an action, etc.)
     console.log('Selected Item:', item);
-    this.searchTerm = item.name; // Set search term when an item is clicked (optional)
-    this.filteredItems = []; // Clear the suggestions after selection (optional)
+    this.searchTerm = item.name;
+    this.filteredItems = [];
+  }
+
+  submitSearch() {
+    this.submittedSearchTerm = this.searchTerm;
+    console.log('Search:', this.submittedSearchTerm);
   }
 }

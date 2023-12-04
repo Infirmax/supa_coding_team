@@ -18,9 +18,11 @@ import { FormBuilder } from '@angular/forms';
               <mat-icon matPrefix>lock_outline</mat-icon>
               <input type="password" autocomplete="false" matInput placeholder="Password" formControlName="password">
             </mat-form-field>
-            <br>
-            <button type="submit" mat-raised-button color="primary">Login</button>
-            <button type="submit" mat-raised-button color="primary">sign up</button>
+
+            <div class="login-buttons">
+              <button type="submit" id = "signup">Sign Up</button>  
+              <button type="submit" mat-raised-button color="primary">Log in</button>
+            </div>
           </form>
         </mat-card>
       </div>
