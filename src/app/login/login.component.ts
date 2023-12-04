@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { AppLoginService } from '../service/app-login.service';
 
 @Component({
   selector: 'app-login',
@@ -38,10 +39,17 @@ export class LoginComponent {
     password: [null]
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, public appLoginService: AppLoginService) {}
 
   onSubmit() {
 
   }
+  ngOnInit(): void {
+  }
+
+  logInOnClick() {
+    this.appLoginService.logIn();
+  }
+  
 
 }
