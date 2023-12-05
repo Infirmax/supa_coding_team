@@ -1,29 +1,30 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-bar',
   templateUrl: './search-bar.component.html',
-  styleUrls: ['./search-bar.component.css'], // Update styleUrls property
+  styleUrls: ['./search-bar.component.css'],
 })
 export class SearchBarComponent {
+
   items: any[] = [
     { name: 'Sakura Dungeon' },
     { name: 'Counter Strike 2' },
     { name: 'Dota 2' },
-    { name: 'PUBG'},
-    { name: 'Lethal Company'},
-    { name: 'Team Fortress 2'},
-    { name: 'Oxygen Not Included'},
-    { name: 'MapleStory'},
-    { name: 'Sakura Clicker'}
+    { name: 'PUBG' },
+    { name: 'Lethal Company' },
+    { name: 'Team Fortress 2' },
+    { name: 'Oxygen Not Included' },
+    { name: 'MapleStory' },
+    { name: 'Sakura Clicker' }
     // Other items
   ];
   filteredItems: any[] = [];
   searchTerm: string = '';
   submittedSearchTerm: string = '';
 
-  constructor() {
+  constructor(private router: Router) {
     this.filteredItems = this.items; // Initially set filteredItems to all items
   }
 
@@ -42,5 +43,9 @@ export class SearchBarComponent {
   submitSearch() {
     this.submittedSearchTerm = this.searchTerm;
     console.log('Search:', this.submittedSearchTerm);
+  }
+
+  isPlayPage() {
+    return this.router.url === '/play';
   }
 }
