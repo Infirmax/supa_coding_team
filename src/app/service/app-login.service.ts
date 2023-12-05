@@ -31,7 +31,7 @@ export class AppLoginService {
       console.log(`LogOut this.user: ${JSON.stringify(this.user)}`);
       this.user = undefined;
       this.isLoggedIn = false;
-      this.router.navigate(['./home']);
+      this.router.navigate(['./play']);
     });
   }
 }
