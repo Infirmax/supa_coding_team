@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterModule} from '@angular/router';
+import { RouterOutlet, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -10,7 +10,7 @@ import { FormsModule } from '@angular/forms';
       </header>
       <nav>
     <ul>
-      <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/play">play</a></li>
       <li><a routerLink="/about">About</a></li>
       <li><a routerLink="/login">Login</a></li>
     <!-- Add more navigation links here -->
@@ -41,7 +41,7 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'homes';
+  title = 'plays';
   searchTerm: string = '';
   items: string[] = ['Item 1', 'Item 2', 'Item 3', 'Item 4', 'Item 5'];
 

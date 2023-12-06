@@ -10,10 +10,11 @@ import { Component } from '@angular/core';
       </header>
       <nav>
       <ul>
-        <li><a routerLink="/home">Home</a></li>
+      <li><a routerLink="/home">Home</a></li>
+        <li><a routerLink="/play">Play</a></li>
         <li><a routerLink="/about">About</a></li>
         <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/signup">signup</a></li>
+        <li><a routerLink="/signup">Signup</a></li>
       <!-- Add more navigation links here -->
       </ul>
       </nav>
@@ -29,5 +30,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'homes';
+  title = 'plays';
 }
