@@ -13,7 +13,7 @@ export class SearchBarComponent {
     { name: 'Sakura Dungeon' },
     { name: 'Counter Strike 2' },
     { name: 'Dota 2' },
-    { name: 'PUBG' },
+    { name: 'PUBG: BATTLEGROUNDS' },
     { name: 'Lethal Company' },
     { name: 'Team Fortress 2' },
     { name: 'Oxygen Not Included' },
