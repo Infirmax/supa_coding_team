@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { DataService } from '../data/service';
 
 @Component({
   selector: 'app-search-bar',
@@ -23,8 +24,9 @@ export class SearchBarComponent {
   filteredItems: any[] = [];
   searchTerm: string = '';
   submittedSearchTerm: string = '';
+  guessedCorrectly = false;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, public dataService: DataService) {
     this.filteredItems = this.items; // Initially set filteredItems to all items
   }
 
@@ -43,6 +45,10 @@ export class SearchBarComponent {
   submitSearch() {
     this.submittedSearchTerm = this.searchTerm;
     console.log('Search:', this.submittedSearchTerm);
+    if (this.submittedSearchTerm === this.dataService.sharedData) {
+      this.guessedCorrectly = true;
+      console.log(this.guessedCorrectly)
+    }
   }
 
   isPlayPage() {
