@@ -25,6 +25,8 @@ export class SearchBarComponent {
   searchTerm: string = '';
   submittedSearchTerm: string = '';
   guessedCorrectly = false;
+  tries = 3;
+  canStillGuess = true;
 
   constructor(private router: Router, public dataService: DataService) {
     this.filteredItems = this.items; // Initially set filteredItems to all items
@@ -48,6 +50,11 @@ export class SearchBarComponent {
     if (this.submittedSearchTerm === this.dataService.sharedData) {
       this.guessedCorrectly = true;
       console.log(this.guessedCorrectly)
+    } else {
+      this.tries--;
+      if(this.tries === 0) {
+        this.canStillGuess = false;
+      }
     }
   }
 
