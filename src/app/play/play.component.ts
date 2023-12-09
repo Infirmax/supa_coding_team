@@ -8,10 +8,10 @@ import { DataService } from '../data/service';
   styleUrl: './play.component.css'
 })
 
-export class playComponent {
-  name: String = "";
-  review: String = "";
-
+export class PlayComponent {
+  name: String = "balls";
+  reviews: any = [];
+  pictures: any = [];
 
   constructor(
     private dataService: DataService
@@ -24,12 +24,10 @@ export class playComponent {
     const response = await fetch('http://localhost:3000/steamgame');
     const data = await response.json();
     this.name = data.name;
-    this.review = data.reviews[5].review;
+    this.reviews = data.reviews;
+    this.pictures = data.pictures;
+
     this.dataService.sharedData = this.name;
-    //U guys can check the console to find review, it's for our testing purpose, should be fine tho
-    console.log(data.reviews);
-    console.log(this.review)
-    console.log(this.name)
   }
 
   ngOnInit(): void {

@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 
-
 @Component({
   selector: 'app-root',
-
   template: `
     <main>
       <header>
@@ -19,15 +17,14 @@ import { Component } from '@angular/core';
       </ul>
       </nav>
       <section>
-        <router-outlet></router-outlet>
+        <app-search-bar></app-search-bar>
       </section>
       <section>
-        <app-search-bar></app-search-bar>
-      </section>  
-  
+        <router-outlet></router-outlet>
+      </section>
     </main>
   `,
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
   title = 'plays';

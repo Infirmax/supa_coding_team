@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SignupModule } from './signup/signup.module';
-
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [

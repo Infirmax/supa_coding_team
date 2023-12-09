@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { playComponent } from './play.component';
+import { PlayComponent } from './play.component';
 
 
 
 @NgModule({
   declarations: [
-    playComponent
+    PlayComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    playComponent
+    PlayComponent
   ]
 })
 export class PlayModule { }
