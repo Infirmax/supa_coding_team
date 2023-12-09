@@ -13,12 +13,16 @@
 
 .picContainer {
   display: flex;
+  align-items: center;
+  justify-content: center;
+
   gap: 10px;
   margin-bottom: 5vh;
 }
 
 .picContainer img{
   max-width: 30vw;
+  max-height: min(800px, 50vh);
   margin: auto;
 }
 
@@ -34,6 +38,4 @@
   width: 80vw;
   margin: auto;
 }
-
-
 
