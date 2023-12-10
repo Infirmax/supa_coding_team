@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SignupModule } from './signup/signup.module';
 import { Component } from '@angular/core';
+import {LoginComponent} from './login/login.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 
 
@@ -26,13 +27,17 @@ import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 
     RouterModule,
     BrowserModule,
     AppRoutingModule,
+    RouterModule.forRoot([
+      {path: 'login', component: LoginComponent},
+      {path: '**', component: LoginComponent}
+    ]),
     SocialLoginModule
   ],
   providers: [
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
-        autoLogin: false,
+        autoLogin: true,
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,

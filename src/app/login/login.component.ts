@@ -52,7 +52,7 @@ export class LoginComponent {
 
 loginWithGoogle(): void {
 this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-.then(() => this.router.navigate(['mainpage']));
+.then(() => this.router.navigate(['login']));
 }
 
   ngOnInit(): void {
