@@ -1,6 +1,8 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AppLoginService } from '../service/app-login.service';
+import {GoogleLoginProvider, SocialAuthService} from 'angularx-social-login';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -23,6 +25,9 @@ import { AppLoginService } from '../service/app-login.service';
             <div class="login-buttons">
               <button type="submit" id = "signup">Sign Up</button>  
               <button type="submit" mat-raised-button color="primary">Log in</button>
+
+              <!-- Google login button -->
+              <button (click)="loginWithGoogle()" mat-raised-button class="google-login-btn">Google</button>
             </div>
           </form>
         </mat-card>
@@ -39,11 +44,17 @@ export class LoginComponent {
     password: [null]
   });
 
-  constructor(private fb: FormBuilder, public appLoginService: AppLoginService) {}
+  constructor(private fb: FormBuilder, public appLoginService: AppLoginService, private router: Router, private socialAuthService: SocialAuthService ) {}
 
   onSubmit() {
 
   }
+
+loginWithGoogle(): void {
+this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+.then(() => this.router.navigate(['mainpage']));
+}
+
   ngOnInit(): void {
   }
 
