@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SignupModule } from './signup/signup.module';
-import { Component } from '@angular/core';
 import {LoginComponent} from './login/login.component';
 import { GoogleLoginProvider, SocialAuthServiceConfig, SocialLoginModule } from 'angularx-social-login';
 

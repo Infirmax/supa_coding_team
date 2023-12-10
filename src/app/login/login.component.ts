@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AppLoginService } from '../service/app-login.service';
-import {GoogleLoginProvider, SocialAuthService} from 'angularx-social-login';
-import {Router} from '@angular/router';
+import {NgZone, AfterViewInit } from '@angular/core';
+
+declare const gapi: any;
 
 @Component({
   selector: 'app-login',
@@ -37,25 +38,36 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginComponent {
+export class LoginComponent implements AfterViewInit {
 
   loginForm = this.fb.group({
     username: [null],
     password: [null]
   });
 
-  constructor(private fb: FormBuilder, public appLoginService: AppLoginService, private router: Router, private socialAuthService: SocialAuthService ) {}
+  constructor(private fb: FormBuilder, public appLoginService: AppLoginService, private ngZone: NgZone) {}
 
   onSubmit() {
 
   }
 
+  ngAfterViewInit(): void {
+    gapi.load('auth2', () => {
+      gapi.auth2.init({
+        client_id: 'your-google-client-id',
+      });
+    });
+  }
+
   loginWithGoogle(): void {
-    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-      .then(() => {
-        this.router.navigate(['home']);
+    gapi.auth2.getAuthInstance().signIn()
+      .then((googleUser: any) => {
+        const profile = googleUser.getBasicProfile();
+        console.log('Google login successful', profile);
+        this.ngZone.run(() => {
+        });
       })
-      .catch((error) => {
+      .catch((error: any) => {
         console.error('Google login failed', error);
       });
   }
