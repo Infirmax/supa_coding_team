@@ -50,10 +50,16 @@ export class LoginComponent {
 
   }
 
-loginWithGoogle(): void {
-this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
-.then(() => this.router.navigate(['login']));
-}
+  loginWithGoogle(): void {
+    this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID)
+      .then(() => {
+        this.router.navigate(['home']);
+      })
+      .catch((error) => {
+        console.error('Google login failed', error);
+      });
+  }
+
 
   ngOnInit(): void {
   }
