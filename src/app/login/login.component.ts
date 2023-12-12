@@ -2,6 +2,9 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AppLoginService } from '../service/app-login.service';
 import {NgZone, AfterViewInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+
 
 declare const gapi: any;
 
@@ -45,7 +48,7 @@ export class LoginComponent implements AfterViewInit {
     password: [null]
   });
 
-  constructor(private fb: FormBuilder, public appLoginService: AppLoginService, private ngZone: NgZone) {}
+  constructor(private socialAuthService: SocialAuthService,private fb: FormBuilder, public appLoginService: AppLoginService, private ngZone: NgZone, private router: Router) {}
 
   onSubmit() {
 
@@ -65,6 +68,7 @@ export class LoginComponent implements AfterViewInit {
         const profile = googleUser.getBasicProfile();
         console.log('Google login successful', profile);
         this.ngZone.run(() => {
+          this.router.navigate(['home']);
         });
       })
       .catch((error: any) => {

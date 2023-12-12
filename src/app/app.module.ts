@@ -7,6 +7,9 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SignupModule } from './signup/signup.module';
+import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -25,7 +28,8 @@ import { SignupModule } from './signup/signup.module';
     AppRoutingModule,
     RouterModule.forRoot([
       {path: 'login', component: LoginComponent},
-      {path: '**', component: LoginComponent}
+      {path: 'home', component: HomeComponent},
+      
     ]),
     SocialLoginModule
   ],
