@@ -1,11 +1,14 @@
 <div *ngIf="isPlayPage()">
-  <input type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="filterItems()">
-  <button (click)="submitSearch()">Submit</button>
+  <input *ngIf="canStillGuess" type="text" placeholder="Search..." [(ngModel)]="searchTerm" (input)="filterItems()">
+  <button *ngIf="canStillGuess" (click)="submitSearch()">Submit</button>
   <p *ngIf="submittedSearchTerm">You guessed: {{ submittedSearchTerm }}</p>
+  <p *ngIf="!canStillGuess">You failed! The correct guess was {{ this.dataService.sharedData }}</p>
+  
 
   <ul *ngIf="filteredItems.length > 0" class="suggestions">
     <li *ngFor="let item of filteredItems" (click)="onItemClick(item)">
       {{item.name}}
     </li>
   </ul>
+  <p *ngIf="guessedCorrectly">You guessed correctly! Congrats!</p>
 </div>

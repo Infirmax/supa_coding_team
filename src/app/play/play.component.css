@@ -6,3 +6,36 @@
   grid-template-rows: 0.5fr auto;
   position: relative;
 }
+
+.title {
+  text-align: center;
+}
+
+.picContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+  margin-bottom: 5vh;
+}
+
+.picContainer img{
+  max-width: 30vw;
+  max-height: min(800px, 50vh);
+  margin: auto;
+}
+
+.reviewContainer{
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+}
+
+.reviewContainer div{
+  white-space: pre-wrap;
+  border: 10px ridge black;
+  width: 80vw;
+  margin: auto;
+}
+
