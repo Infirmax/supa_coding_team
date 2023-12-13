@@ -7,7 +7,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app.routes';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { SignupModule } from './signup/signup.module';
-import { CommonModule } from '@angular/common';
+import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -22,10 +25,30 @@ import { CommonModule } from '@angular/common';
     SignupModule,
     RouterModule,
     BrowserModule,
-    AppRoutingModule
-
+    AppRoutingModule,
+    RouterModule.forRoot([
+      {path: 'login', component: LoginComponent},
+      {path: 'home', component: HomeComponent},
+      
+    ]),
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '710669443340-dm97eraqvjsuao0iitiimf7fbggsnfjk.apps.googleusercontent.com'
+            )
+          }
+        ]
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
