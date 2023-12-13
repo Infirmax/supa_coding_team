@@ -1,9 +1,9 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, NgZone, AfterViewInit  } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { AppLoginService } from '../service/app-login.service';
-import {NgZone, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService } from 'angularx-social-login';
+import { HttpClient } from '@angular/common/http';
 
 
 declare const gapi: any;
@@ -48,16 +48,21 @@ export class LoginComponent implements AfterViewInit {
     password: [null]
   });
 
-  constructor(private socialAuthService: SocialAuthService,private fb: FormBuilder, public appLoginService: AppLoginService, private ngZone: NgZone, private router: Router) {}
+  constructor(private socialAuthService: SocialAuthService,private fb: FormBuilder, public appLoginService: AppLoginService, private ngZone: NgZone, private router: Router, private http: HttpClient) {}
 
   onSubmit() {
-
+    if (this.loginForm.valid) {
+      const userData = this.loginForm.value;
+  
+      // Send the username and password to your backend for authentication
+      this.sendToBackend(userData);
+    }
   }
 
   ngAfterViewInit(): void {
     gapi.load('auth2', () => {
       gapi.auth2.init({
-        client_id: 'your-google-client-id',
+        client_id: '710669443340-dm97eraqvjsuao0iitiimf7fbggsnfjk.apps.googleusercontent.com',
       });
     });
   }
@@ -67,22 +72,44 @@ export class LoginComponent implements AfterViewInit {
       .then((googleUser: any) => {
         const profile = googleUser.getBasicProfile();
         console.log('Google login successful', profile);
-        this.ngZone.run(() => {
-          this.router.navigate(['home']);
-        });
+
+        // Extract relevant information from the Google user
+        const googleUserData = {
+          idToken: googleUser.getAuthResponse().id_token,
+          name: profile.getName()
+        };
+
+        // Send the Google login information to your backend
+        this.sendToBackend(googleUserData);
       })
       .catch((error: any) => {
         console.error('Google login failed', error);
       });
   }
-
-
+  
   ngOnInit(): void {
   }
 
   logInOnClick() {
     this.appLoginService.logIn();
   }
+
+  private sendToBackend(googleUserData: any): void {
+    // Make an HTTP post request to your backend
+    this.http.post('http://localhost:3000/google-login', googleUserData)
+    .subscribe({
+      next: (response) => {
+          console.log('Backend response:', response);
+          // Handle successful response if needed
+          this.router.navigate(['/home']);
+      },
+      
+      error: (error) => {
+          console.error('Error sending data to backend:', error);
+          // Handle error if needed
+      }
+  });
   
+} 
 
 }

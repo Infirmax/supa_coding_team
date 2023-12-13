@@ -1,5 +1,6 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-signup',
@@ -50,15 +51,46 @@ import { FormBuilder } from '@angular/forms';
 })
 export class SignupComponent {
 
-  signupForm = this.fb.group({
+  signupForm: FormGroup = this.fb.group({
+    fname: [null],
+    lname: [null],
     username: [null],
-    password: [null]
+    password: [null],
+    passwordConfirmation: [null]
   });
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private http: HttpClient) {}
 
   onSubmit() {
-
+    if (this.signupForm.valid) {
+      // If the form is valid, proceed to sign up
+      this.signUp();
+    } else {
+      // If the form is not valid, you can handle validation errors or provide feedback to the user
+    }
   }
 
+  signUp() {
+    const userData = this.signupForm.value;
+  
+    const user = {
+      name: `${userData.fname} ${userData.lname}`,
+      username: userData.username, 
+      password: userData.password
+    };
+    
+    this.http.post('http://localhost:3000/register', user) // Send 'user' instead of 'userData'
+      .subscribe({
+        next: () => {
+          console.log('User registered successfully');
+          // Handle success, e.g., redirect to login page
+        },
+        error: (error) => {
+          console.error('Error during registration', error);
+          // Handle error, e.g., show an error message
+        }
+      });
+  }
 }
+
+

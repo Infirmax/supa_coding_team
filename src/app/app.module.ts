@@ -10,7 +10,7 @@ import { SignupModule } from './signup/signup.module';
 import { SocialLoginModule, GoogleLoginProvider, SocialAuthServiceConfig } from 'angularx-social-login';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -20,6 +20,7 @@ import { HomeComponent } from './home/home.component';
 
   ],
   imports: [
+    HttpClientModule,
     FormsModule,
     LoginModule,
     SignupModule,
@@ -37,7 +38,7 @@ import { HomeComponent } from './home/home.component';
     {
       provide: 'SocialAuthServiceConfig',
       useValue: {
-        autoLogin: true,
+        autoLogin: false,
         providers: [
           {
             id: GoogleLoginProvider.PROVIDER_ID,
